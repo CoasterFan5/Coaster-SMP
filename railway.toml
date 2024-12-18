@@ -1,8 +1,6 @@
 [phase.setup]
-cmds = ["pnpm install"]
-
-[build.nixpacksPlan.phases.setup]
 nixPkgs = ["...", "pnpm"]
+cmds = ["pnpm install"]
 
 [build.nixpacksPlan.phases.install]
 dependsOn = ["setup"]
