@@ -4,7 +4,7 @@ await esbuild.build({
   entryPoints: ["./index.ts"],
   bundle: true,
   minify: false,
-  outdir: "./dist/web",
+  outdir: "./dist",
   platform: "node",
   format: "esm",
   target: "esnext",
