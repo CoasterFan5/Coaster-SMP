@@ -1,12 +1,16 @@
-[build]
-builder = "NIXPACKS"
-buildCommand = "pnpm run build"
+[phase.setup]
+cmds = ["pnpm install"]
 
 [build.nixpacksPlan.phases.setup]
 nixPkgs = ["...", "pnpm"]
 
 [build.nixpacksPlan.phases.install]
+dependsOn = ["setup"]
 cmds = ["pnpm install"]
+
+[build]
+builder = "NIXPACKS"
+buildCommand = "pnpm run build"
 
 [deploy]
 startCommand = "node dist"
