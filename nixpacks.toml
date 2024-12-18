@@ -1,0 +1,9 @@
+[phases.setup]
+nixPkgs = ['...', 'pnpm']
+
+[phases.install]
+dependsOn = ['setup']
+cmds = ['pnpm install']
+
+[phases.build]
+cmds = ['pnpm run build']

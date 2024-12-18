@@ -1,11 +1,5 @@
-[build.nixpacksPlan.phases.setup]
-nixPkgs = ["...", "pnpm"]
-
-[build.nixpacksPlan.phases.install]
-dependsOn = ["setup"]
-cmds = ["pnpm install"]
-
 [build]
+nixpacksConfigPath = "nixpacks.toml"
 builder = "NIXPACKS"
 buildCommand = "pnpm run build"
 
