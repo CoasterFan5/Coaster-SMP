@@ -1,5 +1,9 @@
 import { BitField, Client, IntentsBitField, InteractionType } from "discord.js";
 import { menus } from "./contextMenus";
+import { createRequire } from "node:module";
+const require = createRequire(import.meta.url);
+
+require("./api/index");
 
 const client = new Client({
   intents: [
