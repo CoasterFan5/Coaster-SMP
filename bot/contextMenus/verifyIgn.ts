@@ -8,7 +8,7 @@ import {
 } from "discord.js";
 import type { ContextMenuCommand } from "./Types";
 import { z } from "zod";
-import { prisma } from "../db/db";
+import { prisma } from "../../db/db";
 
 export const validateIgn: ContextMenuCommand = {
   command: new ContextMenuCommandBuilder()
