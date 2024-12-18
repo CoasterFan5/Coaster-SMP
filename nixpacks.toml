@@ -1,5 +1,5 @@
 [phases.setup]
-nixPkgs = ['...', 'pnpm']
+nixPkgs = ['...', 'pnpm-9_x']
 
 [phases.install]
 dependsOn = ['setup']
