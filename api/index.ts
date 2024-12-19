@@ -24,9 +24,11 @@ app.withTypeProvider<ZodTypeProvider>().route({
     }),
   },
   handler: async (req, res) => {
+    const realuuid = req.params.uuid.replaceAll("-", "");
+
     const user = await prisma.user.findFirst({
       where: {
-        uuid: req.params.uuid,
+        uuid: realuuid,
       },
     });
 
