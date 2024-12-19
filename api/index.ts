@@ -33,7 +33,7 @@ app.withTypeProvider<ZodTypeProvider>().route({
     });
 
     if (!user) {
-      res.code(401).send("Invalid User");
+      res.code(200).send("Invalid User");
     }
 
     res.code(200).send(user?.discordId);
