@@ -12,42 +12,10 @@ export const wlList: SlashCommand = {
 
     await interaction.deferReply();
 
-    const userNameArray: string[] = [];
-    const promiseArray = [];
-
-    try {
-      for (const user of users) {
-        const p = new Promise(async (resolve, reject) => {
-          const mojangReq = await fetch(
-            `https://api.minecraftservices.com/minecraft/profile/lookup/${user.uuid}`,
-          );
-
-          const body = await mojangReq.json();
-
-          const zodParse = z
-            .object({
-              name: z.string(),
-              id: z.string(),
-            })
-            .safeParse(body);
-
-          if (zodParse.error) {
-            console.warn(zodParse.error);
-            reject();
-            return;
-          }
-
-          userNameArray.push(zodParse.data.name);
-          resolve(0);
-        });
-        promiseArray.push(p);
-      }
-    } catch (e) {
-      interaction.reply("Error fetchng from mojang API");
-      return;
-    }
-
-    await Promise.allSettled(promiseArray);
+    const userNameArray: string[] = users.map(
+      (item) =>
+        item.lastUsername?.toString() || item.uuid + " (no username on file)",
+    );
 
     const embed = new EmbedBuilder()
       .setTitle("Smp Whitelist")

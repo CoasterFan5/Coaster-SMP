@@ -14,6 +14,7 @@ datasource db {
 }
 
 model User {
-  uuid      String @unique
-  discordId String
+  uuid         String  @unique
+  discordId    String
+  lastUsername String?
 }
