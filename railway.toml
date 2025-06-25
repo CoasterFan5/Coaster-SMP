@@ -4,4 +4,4 @@ builder = "NIXPACKS"
 buildCommand = "pnpm run build"
 
 [deploy]
-startCommand = "node dist"
+startCommand = "npx prisma generate && node dist"
