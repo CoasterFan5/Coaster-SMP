@@ -10,7 +10,7 @@
     "dev": "dotenvx run -- tsx watch ./api/index.ts & dotenvx run -- tsx watch ./bot/index.ts",
     "format": "biome format --write .",
     "deployCommands": "dotenvx run -- tsx ./bot/deployCommands.ts",
-    "build": "npx prisma migrate deploy && tsx build.ts"
+    "build": "tsx build.ts"
   },
   "keywords": [],
   "author": "",
