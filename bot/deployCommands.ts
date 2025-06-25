@@ -1,6 +1,11 @@
+import { slashCommands } from "./commands";
 import { menus } from "./contextMenus";
 
-const guildId = "853285321210593300";
+const guildId = process.env.guild_id;
+
+if (!guildId) {
+  throw "No guild id set";
+}
 
 import { REST, Routes } from "discord.js";
 
@@ -9,6 +14,9 @@ const items = [];
 
 for (const key in menus) {
   items.push(menus[key].command.toJSON());
+}
+for (const key in slashCommands) {
+  items.push(slashCommands[key].command.toJSON());
 }
 
 try {

@@ -1,6 +1,6 @@
 import type { ContextMenuCommand } from "./Types";
 import { validateIgn } from "./verifyIgn";
 
-export const menus: { [key: string]: ContextMenuCommand } = {
+export const menus: Record<string, ContextMenuCommand> = {
   "Validate IGN": validateIgn,
 };

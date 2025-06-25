@@ -9,6 +9,7 @@ import {
 import type { ContextMenuCommand } from "./Types";
 import { z } from "zod";
 import { prisma } from "../../db/db";
+import { reloadWhitelist } from "../utils/reloadWhitelist";
 
 export const validateIgn: ContextMenuCommand = {
   command: new ContextMenuCommandBuilder()
@@ -68,6 +69,15 @@ export const validateIgn: ContextMenuCommand = {
       },
     });
 
+    try {
+      await reloadWhitelist();
+    } catch (e) {
+      interaction.reply({
+        content: "Error reloading whitelist",
+        ephemeral: true,
+      });
+    }
+
     const embed = new EmbedBuilder()
       .setDescription(`Welcome to the SMP ${zodParse.data.name}!`)
       .setColor("#ffffff")
@@ -79,5 +89,7 @@ export const validateIgn: ContextMenuCommand = {
     interaction.targetMessage.reply({
       embeds: [embed],
     });
+
+    interaction.reply("User Added!");
   },
 };

@@ -1,5 +1,6 @@
 import { BitField, Client, IntentsBitField, InteractionType } from "discord.js";
 import { menus } from "./contextMenus";
+import { slashCommands } from "./commands";
 
 const client = new Client({
   intents: [
@@ -16,6 +17,11 @@ client.on("interactionCreate", (interaction) => {
     menus[interaction.commandName].handler({
       interaction,
       client,
+    });
+  } else if (interaction.isChatInputCommand()) {
+    slashCommands[interaction.commandName].handler({
+      client,
+      interaction,
     });
   }
 });
