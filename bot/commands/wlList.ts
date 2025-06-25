@@ -9,7 +9,11 @@ export const wlList: SlashCommand = {
     .setName("wl-list")
     .setDescription("View the current whitelist"),
   handler: async ({ client, interaction }) => {
-    const users = await prisma.user.findMany({});
+    const users = await prisma.user.findMany({
+      orderBy: {
+        lastUsername: "asc",
+      },
+    });
 
     await updateWhitelistNames();
 
@@ -17,13 +21,13 @@ export const wlList: SlashCommand = {
 
     const userNameArray: string[] = users.map(
       (item) =>
-        `\`\`\`${item.lastUsername?.toString() || item.uuid + " (no username on file)"}\`\`\``,
+        `\`${item.lastUsername?.toString() || item.uuid + " (no username on file)"}\``,
     );
 
     const embed = new EmbedBuilder()
       .setTitle("Smp Whitelist")
       .setDescription(
-        `As of <t:${Math.floor(Date.now() / 1000)}:R>:\n ${userNameArray.join(",\n")}`,
+        `As of <t:${Math.floor(Date.now() / 1000)}:R>:\n ${userNameArray.join("\n")}`,
       );
 
     embed.setColor(Colors.White);
