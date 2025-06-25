@@ -2,6 +2,7 @@ import { Colors, EmbedBuilder, SlashCommandBuilder } from "discord.js";
 import type { SlashCommand } from "./Types";
 import { prisma } from "../../db/db";
 import { z } from "zod";
+import { updateWhitelistNames } from "../utils/updateWhitelistNames";
 
 export const wlList: SlashCommand = {
   command: new SlashCommandBuilder()
@@ -10,11 +11,13 @@ export const wlList: SlashCommand = {
   handler: async ({ client, interaction }) => {
     const users = await prisma.user.findMany({});
 
+    await updateWhitelistNames();
+
     await interaction.deferReply();
 
     const userNameArray: string[] = users.map(
       (item) =>
-        item.lastUsername?.toString() || item.uuid + " (no username on file)",
+        `\`\`\`${item.lastUsername?.toString() || item.uuid + " (no username on file)"}\`\`\``,
     );
 
     const embed = new EmbedBuilder()
