@@ -66,6 +66,7 @@ export const validateIgn: ContextMenuCommand = {
       data: {
         uuid: zodParse.data.id,
         discordId: interaction.targetMessage.author.id,
+        lastUsername: zodParse.data.name,
       },
     });
 
