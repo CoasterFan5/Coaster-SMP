@@ -5,35 +5,35 @@ import { z } from "zod";
 import { updateWhitelistNames } from "../utils/updateWhitelistNames";
 
 export const wlList: SlashCommand = {
-  command: new SlashCommandBuilder()
-    .setName("wl-list")
-    .setDescription("View the current whitelist"),
-  handler: async ({ client, interaction }) => {
-    const users = await prisma.user.findMany({
-      orderBy: {
-        lastUsername: "asc",
-      },
-    });
+	command: new SlashCommandBuilder()
+		.setName("wl-list")
+		.setDescription("View the current whitelist"),
+	handler: async ({ client, interaction }) => {
+		const users = await prisma.user.findMany({
+			orderBy: {
+				lastUsername: "asc",
+			},
+		});
 
-    await updateWhitelistNames();
+		await updateWhitelistNames();
 
-    await interaction.deferReply();
+		await interaction.deferReply();
 
-    const userNameArray: string[] = users.map(
-      (item) =>
-        `\`${item.lastUsername?.toString() || item.uuid + " (no username on file)"}\``,
-    );
+		const userNameArray: string[] = users.map(
+			(item) =>
+				`\`${item.lastUsername?.toString() || item.uuid + " (no username on file)"}\``,
+		);
 
-    const embed = new EmbedBuilder()
-      .setTitle("Smp Whitelist")
-      .setDescription(
-        `As of <t:${Math.floor(Date.now() / 1000)}:R>:\n ${userNameArray.join("\n")}`,
-      );
+		const embed = new EmbedBuilder()
+			.setTitle("Smp Whitelist")
+			.setDescription(
+				`As of <t:${Math.floor(Date.now() / 1000)}:R>:\n ${userNameArray.join("\n")}`,
+			);
 
-    embed.setColor(Colors.White);
+		embed.setColor(Colors.White);
 
-    interaction.editReply({
-      embeds: [embed],
-    });
-  },
+		interaction.editReply({
+			embeds: [embed],
+		});
+	},
 };

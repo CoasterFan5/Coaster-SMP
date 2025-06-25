@@ -1,33 +1,33 @@
 {
-  "name": "Coaster-SMP",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "type": "module",
-  "module": "nodenext",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "dotenvx run -- tsx watch ./api/index.ts & dotenvx run -- tsx watch ./bot/index.ts",
-    "format": "biome format --write .",
-    "deployCommands": "dotenvx run -- tsx ./bot/deployCommands.ts",
-    "build": "tsx build.ts"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "@biomejs/biome": "^1.9.4",
-    "@dotenvx/dotenvx": "^1.31.0",
-    "@prisma/client": "6.1.0",
-    "@types/node": "^22.10.2",
-    "discord.js": "^14.16.3",
-    "esbuild": "^0.24.0",
-    "fastify": "^5.2.0",
-    "fastify-type-provider-zod": "^4.0.2",
-    "prisma": "^6.1.0",
-    "tsx": "^4.19.2",
-    "typescript": "^5.7.2",
-    "uuid": "^11.1.0",
-    "zod": "^3.24.1"
-  }
+	"name": "Coaster-SMP",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"type": "module",
+	"module": "nodenext",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"dev": "dotenvx run -- tsx watch ./api/index.ts & dotenvx run -- tsx watch ./bot/index.ts",
+		"format": "biome format --write .",
+		"deployCommands": "dotenvx run -- tsx ./bot/deployCommands.ts",
+		"build": "tsx build.ts"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"dependencies": {
+		"@biomejs/biome": "^1.9.4",
+		"@dotenvx/dotenvx": "^1.31.0",
+		"@prisma/client": "6.1.0",
+		"@types/node": "^22.10.2",
+		"discord.js": "^14.16.3",
+		"esbuild": "^0.24.0",
+		"fastify": "^5.2.0",
+		"fastify-type-provider-zod": "^4.0.2",
+		"prisma": "^6.1.0",
+		"tsx": "^4.19.2",
+		"typescript": "^5.7.2",
+		"uuid": "^11.1.0",
+		"zod": "^3.24.1"
+	}
 }
